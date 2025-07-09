@@ -5,6 +5,7 @@ import 'package:toonflix/widgets/currency_card.dart';
 void main() {
   // runApp(const App());
   runApp(const App02());
+  runApp(const App03());
 }
 
 // root widget
@@ -184,6 +185,48 @@ class _App02State extends State<App02> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class App03 extends StatefulWidget {
+  const App03({super.key});
+
+  @override
+  State<App03> createState() => _App03State();
+}
+
+class _App03State extends State<App03> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(titleLarge: TextStyle(color: Colors.red)),
+      ),
+      home: Scaffold(
+        backgroundColor: const Color(0xFFF4EDDB),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [MyLargeTitle()],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatelessWidget {
+  const MyLargeTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'My Large Title',
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
