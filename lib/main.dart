@@ -4,7 +4,7 @@ import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
   // runApp(const App());
-  runApp(const App02());
+  // runApp(const App02());
   runApp(const App03());
 }
 
@@ -198,6 +198,14 @@ class App03 extends StatefulWidget {
 }
 
 class _App03State extends State<App03> {
+  bool showTitle = true;
+
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -209,7 +217,13 @@ class _App03State extends State<App03> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [MyLargeTitle()],
+            children: [
+              showTitle ? MyLargeTitle() : Text('nothing'),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: Icon(Icons.remove_red_eye),
+              ),
+            ],
           ),
         ),
       ),
@@ -217,11 +231,32 @@ class _App03State extends State<App03> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({super.key});
 
   @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  int count = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print('initState!');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print('dispose!');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('build!');
+
     return Text(
       'My Large Title',
       style: TextStyle(
