@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/screens/timer_screen.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
@@ -7,7 +8,8 @@ void main() {
   // runApp(const App());
   // runApp(const App02());
   // runApp(const App03());
-  runApp(const PomodoroApp());
+  // runApp(const PomodoroApp());
+  runApp(const TimerApp());
 }
 
 // root widget
@@ -249,6 +251,32 @@ class PomodoroApp extends StatelessWidget {
         cardColor: Color(0xFFF4EDDB),
       ),
       home: HomeScreen(),
+    );
+  }
+}
+
+class TimerApp extends StatelessWidget {
+  const TimerApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Color(0xFFE7626C),
+          onPrimary: Colors.white,
+          secondary: Color(0xffffffff),
+          onSecondary: Colors.white,
+          surface: Color.fromRGBO(230, 77, 61, 1),
+          onSurface: Colors.black,
+          error: Colors.red,
+          onError: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(color: Color(0xFF232B55)),
+        ),
+      ),
+      home: TimerScreen(),
     );
   }
 }
