@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
   // runApp(const App());
   // runApp(const App02());
-  runApp(const App03());
+  // runApp(const App03());
+  runApp(const PomodoroApp());
 }
 
 // root widget
@@ -147,49 +149,6 @@ class App extends StatelessWidget {
   }
 }
 
-class App02 extends StatefulWidget {
-  const App02({super.key});
-
-  @override
-  State<App02> createState() => _App02State();
-}
-
-class _App02State extends State<App02> {
-  // int counter = 0;
-  List<int> numbers = [];
-
-  void onClicked() {
-    setState(() {
-      // counter = counter + 1;
-      numbers.add(numbers.length);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color(0xFFF4EDDB),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Click count', style: TextStyle(fontSize: 30)),
-              // Text('$counter', style: TextStyle(fontSize: 30)),
-              for (var n in numbers) Text('$n'),
-              IconButton(
-                iconSize: 40,
-                onPressed: onClicked,
-                icon: Icon(Icons.add_box_rounded),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class App03 extends StatefulWidget {
   const App03({super.key});
 
@@ -263,6 +222,33 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
         fontSize: 30,
         color: Theme.of(context).textTheme.titleLarge?.color,
       ),
+    );
+  }
+}
+
+class PomodoroApp extends StatelessWidget {
+  const PomodoroApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Color(0xFFE7626C),
+          onPrimary: Colors.white,
+          secondary: Colors.blue,
+          onSecondary: Colors.white,
+          surface: Color(0xFFE7626C),
+          onSurface: Colors.black,
+          error: Colors.red,
+          onError: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(color: Color(0xFF232B55)),
+        ),
+        cardColor: Color(0xFFF4EDDB),
+      ),
+      home: HomeScreen(),
     );
   }
 }
