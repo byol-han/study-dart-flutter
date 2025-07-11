@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/home_screen.dart';
 import 'package:toonflix/screens/timer_screen.dart';
+import 'package:toonflix/screens/webtoon_screen.dart';
+import 'package:toonflix/services/api_service.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
@@ -9,7 +11,9 @@ void main() {
   // runApp(const App02());
   // runApp(const App03());
   // runApp(const PomodoroApp());
-  runApp(const TimerApp());
+  // runApp(const TimerApp());
+  ApiService().getTodaysToons();
+  runApp(const WebtoonApp());
 }
 
 // root widget
@@ -278,5 +282,14 @@ class TimerApp extends StatelessWidget {
       ),
       home: TimerScreen(),
     );
+  }
+}
+
+class WebtoonApp extends StatelessWidget {
+  const WebtoonApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: WebtoonScreen());
   }
 }
