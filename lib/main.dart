@@ -12,7 +12,6 @@ void main() {
   // runApp(const App03());
   // runApp(const PomodoroApp());
   // runApp(const TimerApp());
-  ApiService().getTodaysToons();
   runApp(const WebtoonApp());
 }
 

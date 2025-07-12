@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/models/webtoon_model.dart';
+import 'package:toonflix/services/api_service.dart';
 
 class WebtoonScreen extends StatefulWidget {
   const WebtoonScreen({super.key});
@@ -8,6 +10,21 @@ class WebtoonScreen extends StatefulWidget {
 }
 
 class _WebtoonScreenState extends State<WebtoonScreen> {
+  List<WebtoonModel> webtoons = [];
+  bool isLoading = true;
+
+  void waitForWebToons() async {
+    webtoons = await ApiService().getTodaysToons();
+    isLoading = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    waitForWebToons();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
